@@ -1,45 +1,32 @@
 import React from 'react';
+import { groq } from 'next-sanity';
+import {getClient, usePreviewSubscription} from '../lib/sanity';
 
 import type { NextPage } from 'next';
 import { LinkConfig } from '../types';
 
-// import Head from 'next/head';
-// import Image from 'next/image';
 import Link from 'next/link';
 
 import BackgroundVideo from '../components/BackgroundVideo';
 import PageHead from '../components/PageHead';
-import { loadMainMenu } from '../lib/loadMenus';
 import styles from '../styles/Home.module.css';
 
 type Props = {
-  menuData: LinkConfig[]
+  menuData: LinkConfig[],
+  preview: boolean
 }
 
-const Home: NextPage<Props> = ({menuData}: Props) => {
-  // const createLink = (
-  //   href: string, 
-  //   title: string, 
-  //   target: HTMLAnchorElement['target'] = '_self'
-  // ) => {
-  //   return {
-  //     href,
-  //     title,
-  //     target
-  //   };
-  // };
+const Home: NextPage<Props> = ({menuData, }: Props) => {
+  // const router = useRouter();
 
-  // const links = [
-  //   createLink('/portfolio', 'Portfolio'),
-  //   createLink('https://github.com/tomas-hartman/', 'GitHub', '_blank'),
-  //   createLink('https://www.linkedin.com/in/tom%C3%A1%C5%A1-hartman-78004a13b/', 'LinkedIn', '_blank'),
-  //   createLink('https://www.instagram.com/tomas_hartman/', 'Instagram', '_blank'),
-  //   createLink('/about', 'About'),
-  // ];
+  // const { data: posts } = usePreviewSubscription(query, {
+  //   initialData: menuData,
+  //   enabled: preview || router.query.preview !== undefined,
+  // });
 
   return (
     <div className={styles.container}>
-      <PageHead />
+      <PageHead>Tomáš Hartman | personal portfolio</PageHead>
 
       <main className={styles.main_animated}>
         <div className={styles.main_content}>
@@ -70,13 +57,20 @@ const Home: NextPage<Props> = ({menuData}: Props) => {
   );
 };
 
-export async function getStaticProps() {
-  const menuData = await loadMainMenu();
+
+const query = groq`
+*[_type=="menus"][0]
+`;
+
+export async function getStaticProps({ preview = false }) {
+  const menuData = await getClient(preview).fetch(query);
 
   return {
     props: {
-      menuData
-    }
+      menuData: menuData.mainMenu,
+      preview
+    },
+    revalidate: 10,
   };
 }
 

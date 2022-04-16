@@ -1,6 +1,6 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
 import React from 'react';
+import { NextPage } from 'next';
+
 import BackgroundVideo from '../components/BackgroundVideo';
 import HomepageLink from '../components/HomepageButton';
 import PageHead from '../components/PageHead';
