@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Open+Sans:wght@300;400;500;600&family=Raleway:wght@800;900&display=swap');
 
-.container {
+.container,
+.container_about,
+.container_portfolio {
   padding: 2rem;
   display: flex;
   height: 100vh;
+  isolation: isolate;
+}
+
+.container_about {
+  background-color: coral;
+}
+
+.container_portfolio {
+  background-color: #af7c8e;
 }
 
 .inner_container {
@@ -35,7 +46,8 @@
 }
 
 .main,
-.main_animated {
+.main_animated,
+.main_portfolio {
   padding: 4rem 1rem;
   flex: 1;
   display: flex;
@@ -45,6 +57,11 @@
   /* #72bec6  */
   background-color: coral;
   position: relative;
+  z-index: 1;
+}
+
+.main_portfolio {
+  background-color: #af7c8e;
 }
 
 .main_animated {
@@ -56,7 +73,7 @@
 }
 
 .main_content {
-  z-index: 100;
+  /* z-index: 100; */
   height: 100%;
   width: 100%;
   display: flex;
@@ -66,9 +83,10 @@
 .background_video {
   position: absolute;
   object-fit: cover;
-  filter: contrast(20%) brightness(151%);
-  opacity: 30%;
-  z-index: 0;
+  /* filter: contrast(20%) brightness(151%); */
+  /* opacity: 30%; */
+  z-index: -1;
+  mix-blend-mode: exclusion;
 }
 
 .container_background_video {
@@ -76,8 +94,9 @@
   object-fit: cover;
   top: 0;
   left: 0;
-  filter: contrast(20%) brightness(151%);
+  /* filter: contrast(20%) brightness(151%); */
   opacity: 50%;
+  mix-blend-mode: exclusion;
 }
 
 .title a {

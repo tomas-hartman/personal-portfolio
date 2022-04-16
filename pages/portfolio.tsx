@@ -10,13 +10,13 @@ import styles from '../styles/Home.module.css';
 
 const about: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container_portfolio}>
       <BackgroundVideo className={styles.container_background_video} />
 
       <div className={styles.inner_container}>
         <PageHead>About</PageHead>
 
-        <main className={styles.main}>
+        <main className={styles.main_portfolio}>
           <h1 className={styles.subpage_title}>
             Portfolio
           </h1>

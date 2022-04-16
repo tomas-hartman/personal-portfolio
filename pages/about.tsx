@@ -8,7 +8,7 @@ import styles from '../styles/Home.module.css';
 
 const about: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container_about}>
       <BackgroundVideo className={styles.container_background_video} />
 
       <div className={styles.inner_container}>
