@@ -27,6 +27,6 @@ export type Picture = {
 
 export type LightboxProps = {
   title: string,
-  current: any,
+  current: Picture,
   data: Picture[]
 }

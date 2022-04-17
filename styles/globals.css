@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.invisible {
+  visibility: hidden;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

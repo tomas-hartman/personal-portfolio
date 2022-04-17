@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 type Props = {
@@ -8,11 +8,9 @@ type Props = {
 
 const Modal = ({children, isOpen}: Props) => {  
   const ref = useRef<HTMLDivElement | null>(null);
-  // const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
     ref.current = document.querySelector('#lightbox-portal');
-    // setMounted(true);
   }, []);
   
   if(!isOpen) return null;

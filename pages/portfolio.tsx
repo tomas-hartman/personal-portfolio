@@ -10,10 +10,11 @@ import BackgroundVideo from '../components/BackgroundVideo';
 import HomepageLink from '../components/HomepageButton';
 import PageHead from '../components/PageHead';
 import Project from '../components/PortfolioItem';
-
-import styles from '../styles/Home.module.css';
 import Modal from '../components/Modal';
 import Lightbox from '../components/Lightbox';
+
+import styles from '../styles/Home.module.css';
+import lightboxStyles from '../styles/Lightbox.module.css';
 
 
 type Props = {
@@ -40,7 +41,7 @@ const about: NextPage<Props> = (props: Props) => {
     <div className={styles.container_portfolio}>
       <BackgroundVideo className={styles.container_background_video} />
 
-      <div className={styles.inner_container}>
+      <div className={`${styles.inner_container} ${isModalOpen ? 'invisible overflow-hidden' : ''}`}>
         <PageHead>Tomáš Hartman | Portfolio</PageHead>
 
         <main className={styles.main_portfolio}>
@@ -68,13 +69,12 @@ const about: NextPage<Props> = (props: Props) => {
 
           <HomepageLink />
 
-          <div id="lightbox-portal"></div>
-
           <Modal isOpen={isModalOpen}>
-            <Lightbox data={lightboxData} handleOpen={handleOpen} handleClose={handleClose} />
+            <Lightbox data={lightboxData} handleClose={handleClose} setLightboxData={setLightboxData} />
           </Modal>
         </main>
       </div>
+      <div className={lightboxStyles.lightbox_portal} id="lightbox-portal"></div>
     </div>
   );
 };

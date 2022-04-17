@@ -36,3 +36,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ##  Read more
 
 - <https://www.sanity.io/guides/sanity-nextjs-tailwindcss>
+
+## How to run repo from scratch
+
+```sh
+echo "NEXT_PUBLIC_SANITY_PROJECT_ID={project_id}" > .env.local
+```
+
+Project_id can be found in admin/sanity.json.
+
+```sh
+# run in two separate terminals
+yarn dev
+yarn sanity
+```
