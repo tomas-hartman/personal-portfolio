@@ -1,3 +1,7 @@
+## Note
+
+Having been long thinking about creating my personal website, and wanting to play with next.js for already quite a long time, I created this over the Easter weekend in 2022. In the week before, a rough design idea came up to me and, on Thursday evening and despite my usual working flow, I just started creating the web with no particular plans, leaving the design - and content - come to me on the way. My idea was to create a minimal website with strong personal touch in its design, that should also be easily scalable in case I wanted or needed to.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
