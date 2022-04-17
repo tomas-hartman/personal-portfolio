@@ -201,16 +201,23 @@
 .portfolio_preview {
   display: flex;
   list-style-type: none;
-  margin: 0 6rem;
+  margin: 1rem 6rem;
   padding: 0;
+  background-color: #3e3e3e;
+  mix-blend-mode: soft-light;
+  padding: 1rem;
 }
 
 .portfolio_card {
-  mix-blend-mode: soft-light;
+  /* mix-blend-mode: soft-light; */
+  filter: grayscale();
+  /* border: 0.25rem solid black; */
 }
 
 .portfolio_card:hover {
   mix-blend-mode: normal;
+  filter: none;
+  /* border: 0.25rem solid white; */
 }
 
 .portfolio_card + .portfolio_card {

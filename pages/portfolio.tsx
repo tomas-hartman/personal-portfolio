@@ -1,14 +1,20 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { groq } from 'next-sanity';
-import React from 'react';
+import { getClient } from '../lib/sanity';
+
+import { LightboxProps, Project as ProjectType } from '../types';
+
 import BackgroundVideo from '../components/BackgroundVideo';
 import HomepageLink from '../components/HomepageButton';
 import PageHead from '../components/PageHead';
 import Project from '../components/PortfolioItem';
-import { getClient } from '../lib/sanity';
 
 import styles from '../styles/Home.module.css';
-import { Project as ProjectType } from '../types';
+import Modal from '../components/Modal';
+import Lightbox from '../components/Lightbox';
+
 
 type Props = {
   projects: ProjectType[],
@@ -18,14 +24,24 @@ type Props = {
 const about: NextPage<Props> = (props: Props) => {
   const {projects} = props;
 
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [lightboxData, setLightboxData] = useState<LightboxProps | null>(null);
+  
+  const handleClose = () => setIsModalOpen(false);
+  const handleOpen = () => setIsModalOpen(true);
+  const handleLightboxData = (data: LightboxProps) => {
+    console.log(data);
+    
+    setLightboxData(data);
+    handleOpen();
+  };
 
   return (
     <div className={styles.container_portfolio}>
       <BackgroundVideo className={styles.container_background_video} />
 
       <div className={styles.inner_container}>
-        <PageHead>About</PageHead>
+        <PageHead>Tomáš Hartman | Portfolio</PageHead>
 
         <main className={styles.main_portfolio}>
           <h1 className={styles.subpage_title}>
@@ -44,12 +60,19 @@ const about: NextPage<Props> = (props: Props) => {
                   description={description}
                   previews={previews}
                   links={links}
+                  setLightboxData={handleLightboxData}
                 />
               );
             })
           }
 
           <HomepageLink />
+
+          <div id="lightbox-portal"></div>
+
+          <Modal isOpen={isModalOpen}>
+            <Lightbox data={lightboxData} handleOpen={handleOpen} handleClose={handleClose} />
+          </Modal>
         </main>
       </div>
     </div>

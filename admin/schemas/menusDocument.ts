@@ -1,4 +1,4 @@
-export const menus = {
+export const MenusDocument = {
   title: "Menus",
   name: "menus",
   type: "document",

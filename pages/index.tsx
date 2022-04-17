@@ -1,14 +1,14 @@
 import React from 'react';
-import { groq } from 'next-sanity';
-import {getClient, usePreviewSubscription} from '../lib/sanity';
-
 import type { NextPage } from 'next';
-import { LinkConfig } from '../types';
-
 import Link from 'next/link';
+import { groq } from 'next-sanity';
+import {getClient} from '../lib/sanity';
+
+import { LinkConfig } from '../types';
 
 import BackgroundVideo from '../components/BackgroundVideo';
 import PageHead from '../components/PageHead';
+
 import styles from '../styles/Home.module.css';
 
 type Props = {
@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({menuData}: Props) => {
 
   return (
     <div className={styles.container}>
-      <PageHead>Tomáš Hartman | personal portfolio</PageHead>
+      <PageHead>Tomáš Hartman | Personal web</PageHead>
 
       <main className={styles.main_animated}>
         <div className={styles.main_content}>
