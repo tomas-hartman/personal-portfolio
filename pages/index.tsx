@@ -16,7 +16,7 @@ type Props = {
   preview: boolean
 }
 
-const Home: NextPage<Props> = ({menuData, }: Props) => {
+const Home: NextPage<Props> = ({menuData}: Props) => {
   // const router = useRouter();
 
   // const { data: posts } = usePreviewSubscription(query, {

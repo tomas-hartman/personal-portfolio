@@ -1,14 +1,25 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
+import { groq } from 'next-sanity';
 import React from 'react';
 import BackgroundVideo from '../components/BackgroundVideo';
 import HomepageLink from '../components/HomepageButton';
 import PageHead from '../components/PageHead';
 import Project from '../components/PortfolioItem';
+import { getClient } from '../lib/sanity';
 
 import styles from '../styles/Home.module.css';
+import { Project as ProjectType } from '../types';
 
-const about: NextPage = () => {
+type Props = {
+  projects: ProjectType[],
+  preview: boolean
+}
+
+const about: NextPage<Props> = (props: Props) => {
+  const {projects} = props;
+
+
+
   return (
     <div className={styles.container_portfolio}>
       <BackgroundVideo className={styles.container_background_video} />
@@ -21,43 +32,22 @@ const about: NextPage = () => {
             Portfolio
           </h1>
 
-          <Project 
-            title='Clean the mess!'
-            year={2019}
-            description="Addon that simplifies the way how excessive amount of tabs can be managed. It particularly aims at how to close several repeating tabs at the same domain that remained open from previous visits."
-            preview={'Image'}
-            links={[
-              {title: 'Firefox', href: '/firefox', target: '_blank'},
-              {title: 'Chrome', href: '/chrome', target: '_blank'},
-              {title: 'GitHub', href: '/github', target: '_blank'},
-            ]}
-          />
+          {
+            projects.map((project) => {
+              const {_key, title, year, description, links, previews} = project;
 
-          <Project 
-            title='Skolahradecns.cz'
-            year={2022}
-            description="School web. Web redesign was carried out with emphasis on better usage of space on bigger and smaller screens and improvements of user experience. Redesign inherits from previous design, updated with cleaner and lighter design features."
-            links={[
-              {title: 'Skolahradecns.cz', href: 'https://www.skolahradecns.cz', target: '_blank'},
-            ]}
-          />
-
-          <Project 
-            title='Simple wp calendar'
-            year={2015}
-            description="Custom calendar plugin implementation for wordpress. Independent project, however designed with skolahradecns.cz in mind. Refactored in 2022 in vue.js."
-            preview={'screenshots'}
-            links={[
-              {title: 'GitHub', href: '/github', target: '_blank'},
-            ]}
-          />
-
-          <Project 
-            title='Skolahradecns.cz'
-            year={2015}
-            description="School web and visual identity."
-            preview={'screenshots'}
-          />
+              return (
+                <Project 
+                  key={_key}
+                  title={title}
+                  year={year}
+                  description={description}
+                  previews={previews}
+                  links={links}
+                />
+              );
+            })
+          }
 
           <HomepageLink />
         </main>
@@ -65,5 +55,21 @@ const about: NextPage = () => {
     </div>
   );
 };
+
+const query = groq`
+*[_type=="portfolioPage"][0].projects
+`;
+
+export async function getStaticProps({preview = false}) {
+  const projects = await getClient(preview).fetch(query);
+
+  return {
+    props: {
+      projects,
+      preview
+    },
+    revalidate: 10
+  };
+}
 
 export default about;

@@ -1,8 +1,3 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-};
-
 const STUDIO_REWRITE = {
   source: '/admin/:path*',
   destination:
@@ -11,7 +6,12 @@ const STUDIO_REWRITE = {
       : '/admin/index.html',
 };
 
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['cdn.sanity.io']
+  },
   rewrites: () => [STUDIO_REWRITE],
 };
 

@@ -1,20 +1,23 @@
-import Link from 'next/link';
 import React from 'react';
+import { LinkConfig, Picture } from '../types';
+
+import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from '../styles/Home.module.css';
-import { LinkConfig } from '../types';
+import PortfolioPreview from './PortfolioPreview';
 
 type Props = {
   title: string,
   year?: number,
   description: string,
   /** @todo */
-  preview?: any,
+  previews?: Picture[],
   links?: LinkConfig[],
 }
 
 const Project: React.FC<Props> = (props: Props) => {
-  const {title, year, description, preview, links} = props;
+  const {title, year, description, previews, links} = props;
 
   const generateLink = (item: LinkConfig) => {
     return (
@@ -26,18 +29,18 @@ const Project: React.FC<Props> = (props: Props) => {
     );
   };
 
+  console.log(previews);
+
   return (
     <section className={styles.project}>
       <h2>{title}{year && ` (${year})`}</h2>
 
       <p className={styles.description}>{description}</p>
 
-      {preview && (
-        <div>Image</div>
-      )}
+      <PortfolioPreview previews={previews} />
 
       {links && (
-        <ul>
+        <ul className={styles.nav_links}>
           {links.map(generateLink)}
         </ul>
       )}

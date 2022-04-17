@@ -144,7 +144,8 @@
 }
 
 .menu_item:hover,
-.link_back:hover {
+.link_back:hover,
+.nav_links a:hover {
   text-decoration: underline;
   text-decoration-style: dotted;
 }
@@ -173,6 +174,7 @@
   font-family: 'Lora', serif;
   margin: 1.5rem 6rem;
   line-height: 1.4;
+  text-align: left;
 }
 
 .project {
@@ -184,6 +186,35 @@
 
 .project + .project {
   margin-top: 3rem;
+}
+
+.nav_links {
+  list-style-type: disclosure-closed;
+  line-height: 1.5;
+  padding-left: 0;
+}
+
+/* .nav_links a:hover {
+
+} */
+
+.portfolio_preview {
+  display: flex;
+  list-style-type: none;
+  margin: 0 6rem;
+  padding: 0;
+}
+
+.portfolio_card {
+  mix-blend-mode: soft-light;
+}
+
+.portfolio_card:hover {
+  mix-blend-mode: normal;
+}
+
+.portfolio_card + .portfolio_card {
+  margin-left: 1rem;
 }
 
 @media (max-width: 600px) {
