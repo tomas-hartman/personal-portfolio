@@ -1,13 +1,10 @@
-import React, { useRef } from 'react';
-import { LightboxProps, LinkConfig, Picture } from '../types';
-
-import Image from 'next/image';
+import React from 'react';
+import { LightboxProps, LinkConfig, Picture } from '../../types';
 import Link from 'next/link';
 
-import styles from '../styles/Home.module.css';
 import PortfolioPreview from './PortfolioPreview';
-import Modal from './Modal';
-import Lightbox from './Lightbox';
+
+import styles from '../../styles/Home.module.css';
 
 type Props = {
   title: string,
@@ -32,27 +29,22 @@ const Project: React.FC<Props> = (props: Props) => {
     );
   };
 
-  // console.log(previews);
-
   const fullTitle = `${title}${year && ` (${year})`}`;
 
   return (
-    <>
-      <section className={styles.project}>
-        <h2>{fullTitle}</h2>
+    <section className={styles.project}>
+      <h2>{fullTitle}</h2>
 
-        <p className={styles.description}>{description}</p>
+      <p className={styles.description}>{description}</p>
 
-        <PortfolioPreview previews={previews} title={fullTitle} setLightboxData={setLightboxData} />
+      <PortfolioPreview previews={previews} title={fullTitle} setLightboxData={setLightboxData} />
 
-        {links && (
-          <ul className={styles.nav_links}>
-            {links.map(generateLink)}
-          </ul>
-        )}
-      </section>
-      
-    </>
+      {links && (
+        <ul className={styles.nav_links}>
+          {links.map(generateLink)}
+        </ul>
+      )}
+    </section>
   );
 };
 

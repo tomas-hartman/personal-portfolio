@@ -4,12 +4,13 @@ import { groq } from 'next-sanity';
 import { getClient, PortableText } from '../lib/sanity';
 
 import BackgroundVideo from '../components/BackgroundVideo';
-import HomepageLink from '../components/HomepageButton';
-import PageHead from '../components/PageHead';
+import HomepageLink from '../components/buttons/HomepageButton';
+import Head from '../components/Head';
 
 import styles from '../styles/Home.module.css';
 
 type Props = {
+  /** @todo */
   data: any
 }
 
@@ -21,7 +22,7 @@ const about: NextPage<Props> = (props: Props) => {
       <BackgroundVideo className={styles.container_background_video} />
 
       <div className={styles.inner_container}>
-        <PageHead>Tomáš Hartman | About</PageHead>
+        <Head>Tomáš Hartman | About</Head>
 
         <main className={styles.main}>
           <PortableText value={data.content} />

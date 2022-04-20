@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 
-import { LightboxProps } from '../types';
+import { LightboxProps } from '../../types';
 
-import lightboxStyles from '../styles/Lightbox.module.css';
-import styles from '../styles/Home.module.css';
+import lightboxStyles from '../../styles/Lightbox.module.css';
+import styles from '../../styles/Home.module.css';
 
-import { imageBuilder } from '../lib/sanity';
+import { imageBuilder } from '../../lib/sanity';
 
 type Props = {
   data: LightboxProps | null,

@@ -7,11 +7,11 @@ import { getClient } from '../lib/sanity';
 import { LightboxProps, Project as ProjectType } from '../types';
 
 import BackgroundVideo from '../components/BackgroundVideo';
-import HomepageLink from '../components/HomepageButton';
-import PageHead from '../components/PageHead';
-import Project from '../components/PortfolioItem';
-import Modal from '../components/Modal';
-import Lightbox from '../components/Lightbox';
+import Head from '../components/Head';
+import HomepageLink from '../components/buttons/HomepageButton';
+import Project from '../components/portfolio/PortfolioItem';
+import Modal from '../components/lightbox/Modal';
+import Lightbox from '../components/lightbox/Lightbox';
 
 import styles from '../styles/Home.module.css';
 import lightboxStyles from '../styles/Lightbox.module.css';
@@ -42,7 +42,7 @@ const about: NextPage<Props> = (props: Props) => {
       <BackgroundVideo className={styles.container_background_video} />
 
       <div className={`${styles.inner_container} ${isModalOpen ? 'invisible overflow-hidden' : ''}`}>
-        <PageHead>Tomáš Hartman | Portfolio</PageHead>
+        <Head>Tomáš Hartman | Portfolio</Head>
 
         <main className={styles.main_portfolio}>
           <h1 className={styles.subpage_title}>

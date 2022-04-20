@@ -7,7 +7,7 @@ import {getClient} from '../lib/sanity';
 import { LinkConfig } from '../types';
 
 import BackgroundVideo from '../components/BackgroundVideo';
-import PageHead from '../components/PageHead';
+import Head from '../components/Head';
 
 import styles from '../styles/Home.module.css';
 
@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({menuData}: Props) => {
 
   return (
     <div className={styles.container}>
-      <PageHead>Tomáš Hartman | Personal web</PageHead>
+      <Head>Tomáš Hartman | Personal web</Head>
 
       <main className={styles.main_animated}>
         <div className={styles.main_content}>

@@ -22,7 +22,8 @@ export type Picture = {
   title: string,
   caption: string,
   alt: string,
-  asset: any, // @todo
+  /** @todo */
+  asset: any,
 } & Partial<DefaultSanity>
 
 export type LightboxProps = {

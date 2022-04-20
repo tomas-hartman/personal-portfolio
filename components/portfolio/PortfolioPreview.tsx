@@ -1,8 +1,8 @@
 import React from 'react';
-import { LightboxProps, Picture } from '../types';
+import { LightboxProps, Picture } from '../../types';
 
-import styles from '../styles/Home.module.css';
-import { imageBuilder } from '../lib/sanity';
+import styles from '../../styles/Home.module.css';
+import { imageBuilder } from '../../lib/sanity';
 import Image from 'next/image';
 
 type Props = {
@@ -17,10 +17,6 @@ const PortfolioPreview: React.FC<Props> = (props: Props) => {
   if(!previews) return null;
 
   const handleClick = (item: Picture) => {
-    // console.log(previews);
-    // console.log(item);
-    // console.log(title);
-
     setLightboxData({title: title, current: item, data: previews});
   };
 
@@ -37,10 +33,8 @@ const PortfolioPreview: React.FC<Props> = (props: Props) => {
           </li>
         );
       })}
-      
     </ul>
   );
-
 };
 
 export default PortfolioPreview;
