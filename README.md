@@ -40,6 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ##  Read more
 
 - <https://www.sanity.io/guides/sanity-nextjs-tailwindcss>
+- <https://gist.github.com/kocisov/2a9567eb51b83dfef48efce02ef3ab06>
 
 ## How to run repo from scratch
 
