@@ -9,11 +9,11 @@ import { LightboxProps, Project as ProjectType } from '../types';
 import BackgroundVideo from '../components/BackgroundVideo';
 import Head from '../components/Head';
 import HomepageLink from '../components/buttons/HomepageButton';
-import Project from '../components/portfolio/PortfolioItem';
+import Project from '../components/project/Project';
 import Modal from '../components/lightbox/Modal';
 import Lightbox from '../components/lightbox/Lightbox';
 
-import styles from '../styles/Home.module.css';
+import layout from '../styles/Layout.module.css';
 import lightboxStyles from '../styles/Lightbox.module.css';
 
 
@@ -31,41 +31,38 @@ const about: NextPage<Props> = (props: Props) => {
   const handleClose = () => setIsModalOpen(false);
   const handleOpen = () => setIsModalOpen(true);
   const handleLightboxData = (data: LightboxProps) => {
-    console.log(data);
+    // console.log(data);
     
     setLightboxData(data);
     handleOpen();
   };
 
   return (
-    <div className={styles.container_portfolio}>
-      <BackgroundVideo className={styles.container_background_video} />
+    <div className={layout.container_portfolio}>
+      <Head>Tomáš Hartman | Portfolio</Head>
+      <BackgroundVideo className={layout.page_background_video} />
 
-      <div className={`${styles.inner_container} ${isModalOpen ? 'invisible overflow-hidden' : ''}`}>
-        <Head>Tomáš Hartman | Portfolio</Head>
-
-        <main className={styles.main_portfolio}>
-          <h1 className={styles.subpage_title}>
+      <div className={`${layout.page_container} ${isModalOpen ? 'invisible overflow-hidden' : ''}`}>
+        <main className={layout.main_portfolio}>
+          <h1>
             Portfolio
           </h1>
 
-          {
-            projects.map((project) => {
-              const {_key, title, year, description, links, previews} = project;
+          {projects.map((project) => {
+            const {_key, title, year, description, links, previews} = project;
 
-              return (
-                <Project 
-                  key={_key}
-                  title={title}
-                  year={year}
-                  description={description}
-                  previews={previews}
-                  links={links}
-                  setLightboxData={handleLightboxData}
-                />
-              );
-            })
-          }
+            return (
+              <Project 
+                key={_key}
+                title={title}
+                year={year}
+                description={description}
+                previews={previews}
+                links={links}
+                setLightboxData={handleLightboxData}
+              />
+            );
+          })}
 
           <HomepageLink />
 
@@ -74,6 +71,7 @@ const about: NextPage<Props> = (props: Props) => {
           </Modal>
         </main>
       </div>
+
       <div className={lightboxStyles.lightbox_portal} id="lightbox-portal"></div>
     </div>
   );

@@ -7,7 +7,7 @@ import BackgroundVideo from '../components/BackgroundVideo';
 import HomepageLink from '../components/buttons/HomepageButton';
 import Head from '../components/Head';
 
-import styles from '../styles/Home.module.css';
+import layout from '../styles/Layout.module.css';
 
 type Props = {
   /** @todo */
@@ -18,13 +18,12 @@ const about: NextPage<Props> = (props: Props) => {
   const {data} = props;
 
   return (
-    <div className={styles.container_about}>
-      <BackgroundVideo className={styles.container_background_video} />
+    <div className={layout.container}>
+      <Head>Tomáš Hartman | About</Head>
+      <BackgroundVideo className={layout.page_background_video} />
 
-      <div className={styles.inner_container}>
-        <Head>Tomáš Hartman | About</Head>
-
-        <main className={styles.main}>
+      <div className={layout.page_container}>
+        <main className={layout.main}>
           <PortableText value={data.content} />
           <HomepageLink />
         </main>

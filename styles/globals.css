@@ -22,3 +22,27 @@ a {
 .overflow-hidden {
   overflow: hidden;
 }
+
+/* TYPOGRAPHY */
+
+h1 {
+  line-height: 1.15;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  align-self: flex-start;
+}
+
+/* h2 {
+
+}
+
+h3 {
+
+} */
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+}

@@ -2,9 +2,10 @@ import React from 'react';
 import { LightboxProps, LinkConfig, Picture } from '../../types';
 import Link from 'next/link';
 
-import PortfolioPreview from './PortfolioPreview';
+import ProjectPreview from './ProjectPreview';
 
 import styles from '../../styles/Home.module.css';
+import projectStyles from '../../styles/Project.module.css';
 
 type Props = {
   title: string,
@@ -32,12 +33,12 @@ const Project: React.FC<Props> = (props: Props) => {
   const fullTitle = `${title}${year && ` (${year})`}`;
 
   return (
-    <section className={styles.project}>
+    <section className={projectStyles.project}>
       <h2>{fullTitle}</h2>
 
       <p className={styles.description}>{description}</p>
 
-      <PortfolioPreview previews={previews} title={fullTitle} setLightboxData={setLightboxData} />
+      <ProjectPreview previews={previews} title={fullTitle} setLightboxData={setLightboxData} />
 
       {links && (
         <ul className={styles.nav_links}>

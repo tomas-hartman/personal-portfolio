@@ -47,7 +47,7 @@ const Lightbox = ({data, handleClose, setLightboxData}: Props) => {
         >
           Close
         </button>
-        <h1 className={styles.subpage_title}>{data.title}</h1>
+        <h1 className={lightboxStyles.project_title}>{data.title}</h1>
 
         <div className={lightboxStyles.image_container}>
           <Image src={src} alt={data.current.alt} priority layout="fill" objectFit="contain" blurDataURL={blurSrc} placeholder="blur" />

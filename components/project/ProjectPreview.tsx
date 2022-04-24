@@ -1,7 +1,8 @@
 import React from 'react';
 import { LightboxProps, Picture } from '../../types';
 
-import styles from '../../styles/Home.module.css';
+import projectStyles from '../../styles/Project.module.css';
+
 import { imageBuilder } from '../../lib/sanity';
 import Image from 'next/image';
 
@@ -11,7 +12,7 @@ type Props = {
   setLightboxData: (data: LightboxProps) => void;
 }
 
-const PortfolioPreview: React.FC<Props> = (props: Props) => {
+const ProjectPreview: React.FC<Props> = (props: Props) => {
   const {previews, title, setLightboxData} = props;
   
   if(!previews) return null;
@@ -21,12 +22,12 @@ const PortfolioPreview: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <ul className={styles.portfolio_preview}>
+    <ul className={projectStyles.project_preview}>
       {previews?.map((item) => {
         const image = imageBuilder(item.asset).width(200).height(200).url();
 
         return (
-          <li className={styles.portfolio_card} key={item._key}>
+          <li className={projectStyles.project_card} key={item._key}>
             <a onClick={() => handleClick(item)}>
               <Image src={image} alt={item.alt} width={200} height={200} />
             </a>
@@ -37,4 +38,4 @@ const PortfolioPreview: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default PortfolioPreview;
+export default ProjectPreview;

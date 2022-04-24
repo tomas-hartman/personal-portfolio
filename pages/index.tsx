@@ -10,6 +10,7 @@ import BackgroundVideo from '../components/BackgroundVideo';
 import Head from '../components/Head';
 
 import styles from '../styles/Home.module.css';
+import layout from '../styles/Layout.module.css';
 
 type Props = {
   menuData: LinkConfig[],
@@ -25,10 +26,10 @@ const Home: NextPage<Props> = ({menuData}: Props) => {
   // });
 
   return (
-    <div className={styles.container}>
+    <div className={layout.container_index}>
       <Head>Tomáš Hartman | Personal web</Head>
 
-      <main className={styles.main_animated}>
+      <main className={layout.main_index}>
         <div className={styles.main_content}>
           <h1 className={styles.title}>
             Tomáš Hartman
@@ -51,7 +52,7 @@ const Home: NextPage<Props> = ({menuData}: Props) => {
           </nav>
         </div>
 
-        <BackgroundVideo className={styles.background_video}/>
+        <BackgroundVideo className={styles.index_background_video}/>
       </main>
     </div>
   );
