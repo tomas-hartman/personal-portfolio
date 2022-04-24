@@ -41,7 +41,7 @@ const Project: React.FC<Props> = (props: Props) => {
       <ProjectPreview previews={previews} title={fullTitle} setLightboxData={setLightboxData} />
 
       {links && (
-        <ul className={styles.nav_links}>
+        <ul className={`${styles.nav_links} ${projectStyles.nav_reference}`}>
           {links.map(generateLink)}
         </ul>
       )}

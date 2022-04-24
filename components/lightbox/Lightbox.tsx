@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, KeyboardEvent, SetStateAction, useEffect } from 'react';
 import Image from 'next/image';
 
 import { LightboxProps } from '../../types';
@@ -7,6 +7,7 @@ import lightboxStyles from '../../styles/Lightbox.module.css';
 import styles from '../../styles/Home.module.css';
 
 import { imageBuilder } from '../../lib/sanity';
+import { useEventListener } from '../../lib/hooks';
 
 type Props = {
   data: LightboxProps | null,
@@ -15,6 +16,24 @@ type Props = {
 }
 
 const Lightbox = ({data, handleClose, setLightboxData}: Props) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    switch(e.key) {
+    case 'ArrowLeft':
+      handleSwitchImage(-1);
+      break;
+    case 'ArrowRight':
+      handleSwitchImage(1);
+      break;
+    case 'Escape':
+      handleClose();
+      break;
+    default:
+      break;
+    }
+  };
+  
+  useEventListener('keydown', handleKeyDown);
+  
   if(!data) return null;
 
   const handleSwitchImage = (dir: -1 | 1) => {
